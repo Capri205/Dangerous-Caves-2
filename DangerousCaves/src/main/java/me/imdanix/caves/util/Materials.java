@@ -89,9 +89,7 @@ public final class Materials {
 
     @SuppressWarnings("deprecation")
     public static ItemStack getHeadFromValue(String value) {
-    	log.log(Level.INFO, "debug - in getHeadFromValue: " + value);
         UUID id = UUID.nameUUIDFromBytes(value.getBytes());
-        log.log(Level.INFO, "debug - id: " + id.toString());
         // Heck yeah, magic numbers
         long less = id.getLeastSignificantBits();
         int lessA = (int) (less >> 32); int lessB = (int) less;
