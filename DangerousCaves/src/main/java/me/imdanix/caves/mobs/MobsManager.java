@@ -42,12 +42,17 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Manages custom mob spawning and registering
  */
 // TODO: Split into Manager and Registry
 public class MobsManager implements Manager<CustomMob>, Listener, Tickable, Configurable {
+	
+	static Logger log = Logger.getLogger("Minecraft");
+
     private static final Pattern CUSTOM_TYPE_PATTERN = Pattern.compile("[a-z\\d_-]+");
 
     private final Map<CustomMob.Ticking, Set<UUID>> tickingEntities = new HashMap<>();

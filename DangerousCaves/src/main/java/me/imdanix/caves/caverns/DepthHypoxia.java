@@ -10,8 +10,10 @@ import me.imdanix.caves.ticks.Tickable;
 import me.imdanix.caves.util.Locations;
 import me.imdanix.caves.util.Utils;
 import me.imdanix.caves.util.random.Rng;
-import me.imdanix.math.FormulaEvaluator;
-import me.imdanix.math.MathDictionary;
+//import me.imdanix.math.FormulaEvaluator;
+//import me.imdanix.math.MathDictionary;
+import ink.glowing.math.FormulaEvaluator;
+import ink.glowing.math.MathDictionary;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -37,8 +39,8 @@ import java.util.WeakHashMap;
 import java.util.function.Predicate;
 
 public class DepthHypoxia implements Tickable, Configurable {
-    private static final PotionEffect SLOW = new PotionEffect(PotionEffectType.SLOW, 120, 1);
-    private static final PotionEffect SLOW_DIGGING = new PotionEffect(PotionEffectType.SLOW_DIGGING, 55, 1);
+    private static final PotionEffect SLOW = new PotionEffect(PotionEffectType.SLOWNESS, 120, 1);
+    private static final PotionEffect SLOW_DIGGING = new PotionEffect(PotionEffectType.MINING_FATIGUE, 55, 1);
 
     private final Plugin plugin;
 

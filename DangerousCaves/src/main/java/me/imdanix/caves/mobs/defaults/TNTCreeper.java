@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 public class TNTCreeper extends MobBase implements Listener {
-    private static final PotionEffect INCREASE_DAMAGE = new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0, false, true);
+    private static final PotionEffect STRENGTH = new PotionEffect(PotionEffectType.STRENGTH, Integer.MAX_VALUE, 0, false, true);
 
     private int tntAmount;
     private double explosionChance;
@@ -35,17 +35,17 @@ public class TNTCreeper extends MobBase implements Listener {
 
     @Override
     public void prepare(LivingEntity entity) {
-        entity.addPotionEffect(INCREASE_DAMAGE);
+        entity.addPotionEffect(STRENGTH);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onExplosion(EntityExplodeEvent event) {
         if (!isThis(event.getEntity())) return;
         LivingEntity entity = (LivingEntity) event.getEntity();
-        entity.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        entity.removePotionEffect(PotionEffectType.STRENGTH);
         Location loc = event.getLocation();
         for (int i = 0; i < tntAmount; i++) {
-            Entity tnt = entity.getWorld().spawnEntity(loc, EntityType.PRIMED_TNT);
+            Entity tnt = entity.getWorld().spawnEntity(loc, EntityType.TNT);
             tnt.setVelocity(new Vector(Rng.nextDouble(2) - 1, 0.3, Rng.nextDouble(2) - 1));
         }
     }

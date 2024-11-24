@@ -16,6 +16,8 @@ import org.bukkit.SoundCategory;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -46,7 +48,9 @@ public class AmbientSounds implements Tickable, Configurable {
         radius = cfg.getDouble("near", 7);
         sounds.clear();
         for (String soundStr : Configuration.section(cfg, "sounds").getKeys(false)) {
-            Sound sound = Utils.getEnum(Sound.class, soundStr.toUpperCase(Locale.ROOT));
+            //Sound sound = Utils.getEnum(Sound.class, soundStr.toUpperCase(Locale.ROOT));
+        	NamespacedKey key = NamespacedKey.minecraft(soundStr.toLowerCase(Locale.ROOT));
+        	Sound sound = Registry.SOUNDS.get(key);
             if (sound == null) continue;
             sounds.add(new WrappedSound(
                     sound,

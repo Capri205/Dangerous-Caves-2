@@ -56,7 +56,7 @@ public class DeadMiner extends MobBase implements CustomMob.Ticking, Listener {
         if (cooldown <= 0) {
             cooldownEffect = null;
         } else {
-            cooldownEffect = new PotionEffect(PotionEffectType.CONFUSION, cooldown*20, 0, true, false);
+            cooldownEffect = new PotionEffect(PotionEffectType.NAUSEA, cooldown*20, 0, true, false);
         }
     }
 
@@ -88,7 +88,7 @@ public class DeadMiner extends MobBase implements CustomMob.Ticking, Listener {
 
     @Override
     public void tick(LivingEntity entity) {
-        if (!torches || entity.hasPotionEffect(PotionEffectType.CONFUSION)) return;
+        if (!torches || entity.hasPotionEffect(PotionEffectType.NAUSEA)) return;
         Block block = entity.getLocation().getBlock();
 
         if (block.getLightLevel() > 0 || (requiresTarget && ((Monster)entity).getTarget() == null) ||

@@ -35,10 +35,10 @@ import java.util.List;
 import java.util.Set;
 
 public class CaveGolem extends MobBase implements Listener {
-    private static final PotionEffect SLOW = new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 0);
+    private static final PotionEffect SLOWNESS = new PotionEffect(PotionEffectType.SLOWNESS, Integer.MAX_VALUE, 0);
     private static final PotionEffect BLINDNESS = new PotionEffect(PotionEffectType.BLINDNESS, 30, 0);
-    private static final PotionEffect CONFUSION = new PotionEffect(PotionEffectType.CONFUSION, 20, 0);
-    private static final PotionEffect SLOW_PL = new PotionEffect(PotionEffectType.SLOW, 40, 1);
+    private static final PotionEffect CONFUSION = new PotionEffect(PotionEffectType.NAUSEA, 20, 0);
+    private static final PotionEffect SLOW_PL = new PotionEffect(PotionEffectType.SLOWNESS, 40, 1);
 
     private static final ItemStack CHESTPLATE = Materials.getColored(EquipmentSlot.CHEST, 105, 105, 105);;
     private static final ItemStack LEGGINGS = Materials.getColored(EquipmentSlot.LEGS, 105, 105, 105);
@@ -117,7 +117,7 @@ public class CaveGolem extends MobBase implements Listener {
         equipment.setLeggings(LEGGINGS);                equipment.setLeggingsDropChance(0);
         equipment.setBoots(BOOTS);                      equipment.setBootsDropChance(0);
         entity.setSilent(true);
-        if (slow) entity.addPotionEffect(SLOW);
+        if (slow) entity.addPotionEffect(SLOWNESS);
     }
 
     @EventHandler(ignoreCancelled = true)

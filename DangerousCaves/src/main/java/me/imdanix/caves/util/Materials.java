@@ -22,8 +22,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public final class Materials {
+
+	static Logger log = Logger.getLogger("Minecraft");
+
     public static final List<Material> HELMETS;
     public static final List<Material> LEGGINGS;
     public static final List<Material> CHESTPLATES;
@@ -84,7 +89,9 @@ public final class Materials {
 
     @SuppressWarnings("deprecation")
     public static ItemStack getHeadFromValue(String value) {
+    	log.log(Level.INFO, "debug - in getHeadFromValue: " + value);
         UUID id = UUID.nameUUIDFromBytes(value.getBytes());
+        log.log(Level.INFO, "debug - id: " + id.toString());
         // Heck yeah, magic numbers
         long less = id.getLeastSignificantBits();
         int lessA = (int) (less >> 32); int lessB = (int) less;
@@ -92,7 +99,7 @@ public final class Materials {
         int mostA = (int) (most >> 32); int mostB = (int) most;
         return Bukkit.getUnsafe().modifyItemStack(
                 new ItemStack(Material.PLAYER_HEAD),
-                "{SkullOwner:{Id:[I;" + lessA + "," + lessB + "," + mostA + "," + mostB + "]," +
+                "minecraft:player_head{SkullOwner:{Id:[I;" + lessA + "," + lessB + "," + mostA + "," + mostB + "]," +
                         "Properties:{textures:[{Value:\"" + value + "\"}]}}}"
         );
     }

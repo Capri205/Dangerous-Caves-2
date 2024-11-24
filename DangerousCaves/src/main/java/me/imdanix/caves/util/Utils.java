@@ -41,7 +41,7 @@ public final class Utils {
     }
 
     public static void setMaxHealth(LivingEntity entity, double health) {
-        entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
+        entity.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         entity.setHealth(health);
     }
 
